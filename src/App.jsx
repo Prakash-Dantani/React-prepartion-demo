@@ -1,32 +1,16 @@
-import { useContext, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Child from './Child';
-import { CounterContext } from './Context/contextProvider';
-import DecrementButton from './decrementButton';
-import exportPdf from './exportPdf';
-import { Link } from "react-router-dom";
+import Home from './Home';
+
 
 
 function App() {
-  // const [count, setCount] = useState(0);
-  const { count } = useContext(CounterContext);
-
   return (
-    <>
-      
-      <div className="row pt-5">
-        <div className="com-md-12">
-          <h2>Parent Child Render</h2>
-          <h3>Count is : {count}</h3>
-        </div>
-        <div className="col-md-2"></div>
-      </div>
-      <div className="row pt-5">
-        <Child />
-        <DecrementButton />
-        <Link to = {<exportPdf />}>Print PDF</Link>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
